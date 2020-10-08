@@ -5,6 +5,7 @@
                 <label :for="item.id">{{item.label}}</label>
                 <input :type="item.type" :id="item.id" :name="item.id" v-model="item.value"
                 :placeholder="item.placeholder">
+                <small style="color: crimson;"></small>
             </div>
             <button type="submit">Submit</button>
         </form>
@@ -12,6 +13,8 @@
 </template>
 
 <script>
+// import { UISignUpValidationService } from '../../services/validationService';
+
 export default {
     name: "SignUp",
     data() {
@@ -23,7 +26,9 @@ export default {
                     value: "",
                     placeholder: "First Name",
                     type: "text",
-                    required: true
+                    required: true,
+                    error: false,
+                    message: ""
                 },
                 {
                     label: "Last Name",
@@ -31,7 +36,9 @@ export default {
                     value: "",
                     placeholder: "Last Name",
                     type: "text",
-                    required: true
+                    required: true,
+                    error: false,
+                    message: ""
                 },
                 {
                     label: "E-mail",
@@ -39,7 +46,9 @@ export default {
                     value: "",
                     placeholder: "E-mail",
                     type: "email",
-                    required: true
+                    required: true,
+                    error: false,
+                    message: ""
                 },
                 {
                     label: "Password",
@@ -47,7 +56,9 @@ export default {
                     value: "",
                     placeholder: "Password",
                     type: "password",
-                    required: true
+                    required: true,
+                    error: false,
+                    message: ""
                 },
                 {
                     label: "Confirm Password",
@@ -55,14 +66,18 @@ export default {
                     value: "",
                     placeholder: "Confirm Password",
                     type: "password",
-                    required: true
+                    required: true,
+                    error: false,
+                    message: ""
                 }
             ]
         }
     },
     methods: {
-        signup: (e)=>{
+        signup(e){
             e.preventDefault();
+            console.log(this.$data.signupFormItems[0].value)
+            // console.log(UISignUpValidationService(e.srcElement[0].value,e.srcElement[1].value,e.srcElement[2].value,e.srcElement[3].value, e.srcElement[4].value));
             console.log(e.srcElement[0].validity.valid);
             console.log(e);
         }
