@@ -1,8 +1,7 @@
 <template>
-  <div>
+  <div class="signup">
     <form @submit="signup">
       <div v-for="item in signupFormItems" :key="item.id">
-        <label :for="item.id">{{ item.label }}</label>
         <input
           :type="item.type"
           :id="item.id"
@@ -100,4 +99,9 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.signup {
+  height: auto;
+  width: auto;
+}
+</style>
