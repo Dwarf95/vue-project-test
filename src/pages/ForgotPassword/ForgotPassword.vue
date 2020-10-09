@@ -11,9 +11,11 @@
             v-model="item.value"
             :placeholder="item.placeholder"
           />
-          <small style="color: crimson" v-if="item.error">{{
+          <div class="h-20px">
+            <small style="color: crimson" v-if="item.error">{{
             item.message
           }}</small>
+          </div>
         </div>
         <button type="send" class="pointer">SEND</button>
       </form>
@@ -63,6 +65,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.h-20px { height: 20px; }
 .pointer {
   cursor: pointer !important;
 }
