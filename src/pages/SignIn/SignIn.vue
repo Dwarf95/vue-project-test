@@ -1,5 +1,5 @@
 <template>
-    <div class="signup">
+  <div class="signup">
     <div class="signup-container">
       <h1>SIGN IN</h1>
       <form @submit="signin">
@@ -16,14 +16,20 @@
           }}</small>
         </div>
         <div class="d-flex flex-row justify-between align-baseline">
-            <div>
-                <input type="checkbox" id="remember-me" name="remember-me" class="mt-2" />
-                <label for="remember-me" class="ml-1">Remember me</label>
-            </div>
-            <a href="/forgot-password">Forgot password</a>
+          <div>
+            <input
+              type="checkbox"
+              id="remember-me"
+              name="remember-me"
+              class="mt-2"
+            />
+            <label for="remember-me" class="ml-1">Remember me</label>
+          </div>
+          <a href="/forgot-password">Forgot password</a>
         </div>
         <div class="sign-in-registration">
-          <p>New to Skeleton?</p><a href="/sign-up">Sign up now</a>
+          <p>New to Skeleton?</p>
+          <a href="/sign-up">Sign up now</a>
         </div>
         <button type="submit">SUBMIT</button>
       </form>
@@ -32,54 +38,75 @@
 </template>
 
 <script>
-export default {
-    data(){
-        return {
-            signInFormItems: [
-                {
-                    label: "E-mail",
-                    id: "email",
-                    value: "",
-                    placeholder: "Enter your E-mail",
-                    type: "email",
-                    required: true,
-                    error: false,
-                    message: "",
-                },
-                {
-                    label: "Password",
-                    id: "password",
-                    value: "",
-                    placeholder: "Enter your Password",
-                    type: "password",
-                    required: true,
-                    error: false,
-                    message: "",
-                }
-            ]
-        }
-    },
-    methods: {
-        signin(e){
-            e.preventDefault();
-            console.log(this.signInFormItems);
-        }
-    },
-    setup () {
-        
+import { UISignUpValidationService } from "../../services/validationService";
 
-        return {}
-    }
-}
+export default {
+  name: "SignIn",
+  data() {
+    return {
+      signInFormItems: [
+        {
+          label: "E-mail",
+          id: "email",
+          value: "",
+          placeholder: "Enter your E-mail",
+          type: "email",
+          required: true,
+          error: false,
+          message: "",
+        },
+        {
+          label: "Password",
+          id: "esc-password",
+          value: "",
+          placeholder: "Enter your Password",
+          type: "password",
+          required: true,
+          error: false,
+          message: "",
+        },
+      ],
+    };
+  },
+  methods: {
+    signin(e) {
+      e.preventDefault();
+      let validatedData = UISignUpValidationService(this.$data.signInFormItems);
+      this.updateChangedFields(validatedData);
+      console.log("signInFormItems", this.$data.signInFormItems);
+    },
+    updateChangedFields(data) {
+      data.map((value, index) => {
+        this.$data.signInFormItems[index].message = value.message;
+        this.$data.signInFormItems[index].error = value.error;
+      });
+    },
+  },
+  setup() {
+    return {};
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-.mt-2 { margin-top: 1.5em !important; }
-.ml-1 { margin-left: .5em !important;}
-.d-flex { display: flex; }
-.flex-row { flex-direction: row; }
-.justify-between { justify-content: space-between; }
-.align-baseline { align-items: baseline; }
+.mt-2 {
+  margin-top: 1.5em !important;
+}
+.ml-1 {
+  margin-left: 0.5em !important;
+}
+.d-flex {
+  display: flex;
+}
+.flex-row {
+  flex-direction: row;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.align-baseline {
+  align-items: baseline;
+}
 .signup {
   height: auto;
   width: 30%;
