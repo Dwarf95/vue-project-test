@@ -1,46 +1,70 @@
 <template>
-<div class="signup">
+  <div class="signup">
     <div class="signup-container">
       <h1>FORGOT PASSWORD</h1>
       <form @submit="forgotPassword">
-            <input
-          type="email"
-          id="email"
-          name="email"
-          v-model="email"
-          placeholder="Enter your E-mail"
-        />
-      <button type="submit" class="pointer">SUBMIT</button>
-        </form>
+        <div v-for="item in forgotPasswordFormItems" :key="item.id">
+          <input
+            :type="item.type"
+            :id="item.id"
+            :name="item.id"
+            v-model="item.value"
+            :placeholder="item.placeholder"
+          />
+          <small style="color: crimson" v-if="item.error">{{
+            item.message
+          }}</small>
+        </div>
+        <button type="send" class="pointer">SEND</button>
+      </form>
     </div>
-</div>
+  </div>
 </template>
 
 <script>
+import { authValidationService } from "../../services/validationService";
 export default {
-    name: "ForgotPassword",
-    data(){
-        return {
-            email: null,
-            error: false,
-            message: ""
-        }
+  name: "ForgotPassword",
+  data() {
+    return {
+      forgotPasswordFormItems: [
+        {
+          label: "E-mail",
+          id: "email",
+          value: "",
+          placeholder: "E-mail",
+          type: "email",
+          required: true,
+          error: false,
+          message: "",
+        },
+      ],
+    };
+  },
+  methods: {
+    forgotPassword(e) {
+      e.preventDefault();
+      let validatedData = authValidationService(
+        this.$data.forgotPasswordFormItems
+      );
+      this.updateChangedFields(validatedData);
     },
-    methods: {
-        forgotPassword(e){
-            e.preventDefault();
-            console.log(this.$data.email);
-        }
+    updateChangedFields(data) {
+      data.map((value, index) => {
+        this.$data.forgotPasswordFormItems[index].message = value.message;
+        this.$data.forgotPasswordFormItems[index].error = value.error;
+      });
     },
-    setup () {
-        return {}
-    }
-}
+  },
+  setup() {
+    return {};
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-.pointer{
-    cursor: pointer !important;
+.pointer {
+  cursor: pointer !important;
 }
 .signup {
   height: 80%;
@@ -75,6 +99,7 @@ export default {
   margin-top: 10px;
   padding: 0 10px 0 10px;
   font-family: "Roboto", sans-serif !important;
+  font-size: 16px;
   border: 1px solid #333;
   border-radius: 4px;
 }
@@ -91,46 +116,46 @@ export default {
   border-radius: 6px;
 }
 /* EXTRA EXTRA small devices */
-@media only screen and (max-width: 400px){
-  .signup{
-        width: 100% !important;
-        .signup-container{
-          width: 90%;
-        }
+@media only screen and (max-width: 400px) {
+  .signup {
+    width: 100% !important;
+    .signup-container {
+      width: 90%;
+    }
   }
 }
 /* Extra small devices (phones, 600px and down) */
 @media (min-width: 400px) and (max-width: 600px) {
-    .signup{
-        width: 90% !important;
-    }
+  .signup {
+    width: 90% !important;
   }
-  
-  /* Small devices (portrait tablets and large phones, 600px and up) */
-  @media only screen and (min-width: 600px) {
-    .signup{
-        width: 90% !important;
-    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .signup {
+    width: 90% !important;
   }
-  
-  /* Medium devices (landscape tablets, 768px and up) */
-  @media only screen and (min-width: 768px) {
-    .signup{
-        width: 90% !important;
-    }
-  } 
-  
-  /* Large devices (laptops/desktops, 992px and up) */
-  @media only screen and (min-width: 992px) {
-   .signup{
-        width: 60% !important;
-    }
-  } 
-  
-  /* Extra large devices (large laptops and desktops, 1200px and up) */
-  @media only screen and (min-width: 1200px) {
-    .signup{
-        width: 30% !important;
-    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .signup {
+    width: 90% !important;
   }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .signup {
+    width: 60% !important;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .signup {
+    width: 30% !important;
+  }
+}
 </style>
