@@ -19,8 +19,9 @@
         </div>
         <button type="send" class="pointer">SEND</button>
       </form>
-      <div v-if="!forgotPassInProgress">
-        Done!
+      <div v-if="!forgotPassInProgress" class="d-flex flex-column justify-center align-center">
+        <img src="../../assets/thumbs-up-solid.svg" width="90" class="color-dark">
+        <p class="mt-3">Success! Check your E-mail.</p>
       </div>
     </div>
   </div>
@@ -71,10 +72,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.color-dark { color: #333;}
 .h-20px { height: 20px; }
 .pointer {
   cursor: pointer !important;
 }
+.mt-3 { margin-top: 1.5em; }
+.d-flex { display: flex; }
+.flex-column { flex-direction: column; }
+.justify-center { justify-content: center; }
+.align-center { align-items: center; }
 .signup {
   height: 80%;
   width: 30%;
