@@ -15,6 +15,9 @@
             item.message
           }}</small>
         </div>
+        <div class="signup-login mt-2 d-flex">
+          <p>Already have an account?</p><a href="/sign-in">Sign in</a>
+        </div>
         <button type="submit">SUBMIT</button>
       </form>
     </div>
@@ -103,6 +106,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.mt-2 { margin-top: 1.5em !important; }
+.ml-1 { margin-left: .5em !important;}
+.d-flex { display: flex; }
 .signup {
   height: auto;
   width: 30%;
@@ -136,6 +142,7 @@ export default {
   margin-top: 10px;
   padding: 0 10px 0 10px;
   font-family: "Roboto", sans-serif !important;
+  font-size: 16px;
   border: 1px solid #333;
   border-radius: 4px;
 }
@@ -150,5 +157,15 @@ export default {
   font-family: "Roboto", sans-serif !important;
   border: 1px solid transparent;
   border-radius: 6px;
+}
+.signup-login p {
+  font-size: 16px;
+  margin-right: 5px;
+}
+.signup-login a {
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #000;
 }
 </style>

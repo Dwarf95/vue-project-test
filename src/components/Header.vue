@@ -16,10 +16,11 @@ export default {
   height: 65px;
   width: calc(100% - 30px);
   display: flex;
-  color: #333;
+  align-items: center;
   background-color: transparent;
-  font-family: "Big Shoulders Display", cursive !important;
-  font-size: auto;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 25px;
+  color: #333;
   padding: 0 15px;
   position: absolute;
 }

@@ -22,6 +22,9 @@
             </div>
             <a href="/forgot-password">Forgot password</a>
         </div>
+        <div class="sign-in-registration">
+          <p>New to Skeleton?</p><a href="/sign-up">Sign up now</a>
+        </div>
         <button type="submit">SUBMIT</button>
       </form>
     </div>
@@ -110,6 +113,7 @@ export default {
   margin-top: 10px;
   padding: 0 10px 0 10px;
   font-family: "Roboto", sans-serif !important;
+  font-size: 16px;
   border: 1px solid #333;
   border-radius: 4px;
 }
@@ -124,5 +128,30 @@ export default {
   font-family: "Roboto", sans-serif !important;
   border: 1px solid transparent;
   border-radius: 6px;
+}
+.sign-in-registration {
+  width: 100%;
+  height: auto;
+  display: flex;
+  margin-top: 25px;
+}
+.sign-in-registration p {
+  font-size: 16px;
+  margin-right: 5px;
+}
+a {
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+  text-decoration: none;
+}
+label {
+  font-size: 14px;
+}
+.sign-in-registration a {
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  text-decoration: none;
 }
 </style>
