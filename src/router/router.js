@@ -5,7 +5,7 @@ import SignIn from '../pages/SignIn/SignIn.vue';
 import ForgotPassword from '../pages/ForgotPassword/ForgotPassword.vue';
 import ResetPassword from '../pages/ResetPassword/ResetPassword.vue';
 import PageNotFound from '../pages/PageNotFound/PageNotFound.vue';
-
+import ListUsers from '../pages/Users/ListUsers.vue';
 
 const history = createWebHistory()
 const router = createRouter({
@@ -30,6 +30,10 @@ const router = createRouter({
         {
             path: '/reset-password',
             component: ResetPassword
+        },
+        {
+            path: '/users',
+            component: ListUsers
         },
         { path: '/:pathMatch(.*)*', component: PageNotFound }
     ]
