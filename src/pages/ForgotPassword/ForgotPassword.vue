@@ -1,8 +1,8 @@
 <template>
   <div class="signup">
-    <div class="signup-container">
-      <h1>FORGOT PASSWORD</h1>
-      <form @submit="forgotPassword">
+    <div class="signup-container" >
+      <h1 v-if="forgotPassInProgress">FORGOT PASSWORD</h1>
+      <form @submit="forgotPassword" v-if="forgotPassInProgress">
         <div v-for="item in forgotPasswordFormItems" :key="item.id">
           <input
             :type="item.type"
@@ -19,6 +19,9 @@
         </div>
         <button type="send" class="pointer">SEND</button>
       </form>
+      <div v-if="!forgotPassInProgress">
+        Done!
+      </div>
     </div>
   </div>
 </template>
@@ -41,6 +44,7 @@ export default {
           message: "",
         },
       ],
+      forgotPassInProgress: true
     };
   },
   methods: {
@@ -50,6 +54,8 @@ export default {
         this.$data.forgotPasswordFormItems
       );
       this.updateChangedFields(validatedData);
+      const someError = validatedData.some((item) => item.error === true);
+      someError ? this.forgotPassInProgress = true : this.forgotPassInProgress = false;
     },
     updateChangedFields(data) {
       data.map((value, index) => {
