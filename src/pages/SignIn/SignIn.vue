@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { UISignUpValidationService } from "../../services/validationService";
+import { authValidationService } from "../../services/validationService";
 
 export default {
   name: "SignIn",
@@ -71,7 +71,7 @@ export default {
   methods: {
     signin(e) {
       e.preventDefault();
-      let validatedData = UISignUpValidationService(this.$data.signInFormItems);
+      let validatedData = authValidationService(this.$data.signInFormItems);
       this.updateChangedFields(validatedData);
       console.log("signInFormItems", this.$data.signInFormItems);
     },

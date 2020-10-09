@@ -16,7 +16,8 @@
           }}</small>
         </div>
         <div class="signup-login mt-2 d-flex">
-          <p>Already have an account?</p><a href="/sign-in">Sign in</a>
+          <p>Already have an account?</p>
+          <a href="/sign-in">Sign in</a>
         </div>
         <button type="submit">SUBMIT</button>
       </form>
@@ -25,7 +26,7 @@
 </template>
 
 <script>
-import { UISignUpValidationService } from "../../services/validationService";
+import { authValidationService } from "../../services/validationService";
 
 export default {
   name: "SignUp",
@@ -89,7 +90,7 @@ export default {
     signup(e) {
       e.preventDefault();
 
-      let validatedData = UISignUpValidationService(this.$data.signupFormItems);
+      let validatedData = authValidationService(this.$data.signupFormItems);
       this.updateChangedFields(validatedData);
     },
     updateChangedFields(data) {
@@ -106,9 +107,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.mt-2 { margin-top: 1.5em !important; }
-.ml-1 { margin-left: .5em !important;}
-.d-flex { display: flex; }
+.mt-2 {
+  margin-top: 1.5em !important;
+}
+.ml-1 {
+  margin-left: 0.5em !important;
+}
+.d-flex {
+  display: flex;
+}
 .signup {
   height: auto;
   width: 30%;
