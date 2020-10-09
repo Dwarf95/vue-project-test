@@ -31,7 +31,7 @@
           <p>New to Skeleton?</p>
           <a href="/sign-up">Sign up now</a>
         </div>
-        <button type="submit">SUBMIT</button>
+        <button type="submit" class="pointer">SUBMIT</button>
       </form>
     </div>
   </div>
@@ -89,6 +89,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.pointer{
+  cursor: pointer !important;
+}
 .mt-2 {
   margin-top: 1.5em !important;
 }
@@ -108,12 +111,12 @@ export default {
   align-items: baseline;
 }
 .signup {
-  height: auto;
+  height: 80%;
   width: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 65px;
+  justify-content: center;
   font-family: "Roboto", sans-serif !important;
   font-size: 18px;
 }
@@ -181,4 +184,47 @@ label {
   color: #000;
   text-decoration: none;
 }
+/* EXTRA EXTRA small devices */
+@media only screen and (max-width: 400px){
+  .signup{
+        width: 100% !important;
+        .signup-container{
+          width: 90%;
+        }
+  }
+}
+/* Extra small devices (phones, 600px and down) */
+@media (min-width: 400px) and (max-width: 600px) {
+    .signup{
+        width: 90% !important;
+    }
+  }
+  
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+    .signup{
+        width: 90% !important;
+    }
+  }
+  
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+    .signup{
+        width: 90% !important;
+    }
+  } 
+  
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+   .signup{
+        width: 60% !important;
+    }
+  } 
+  
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+    .signup{
+        width: 30% !important;
+    }
+  }
 </style>
