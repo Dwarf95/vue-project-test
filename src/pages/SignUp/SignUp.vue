@@ -11,9 +11,11 @@
             v-model="item.value"
             :placeholder="item.placeholder"
           />
-          <small style="color: crimson" v-if="item.error">{{
-            item.message
-          }}</small>
+          <div class="h-13px">
+            <small style="color: crimson" v-if="item.error">{{
+              item.message
+            }}</small>
+          </div>
         </div>
         <div class="signup-login mt-2 d-flex">
           <p>Already have an account?</p>
@@ -107,6 +109,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.h-13px {
+  height: 13px;
+}
 .pointer{
   cursor: pointer !important;
 }

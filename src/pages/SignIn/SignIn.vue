@@ -11,9 +11,11 @@
             v-model="item.value"
             :placeholder="item.placeholder"
           />
-          <small style="color: crimson" v-if="item.error">{{
-            item.message
-          }}</small>
+          <div class="h-13px">
+            <small style="color: crimson" v-if="item.error">{{
+              item.message
+            }}</small>
+          </div>
         </div>
         <div class="d-flex flex-row justify-between align-baseline">
           <div>
@@ -89,7 +91,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.pointer{
+.h-13px {
+  height: 13px;
+}
+.pointer {
   cursor: pointer !important;
 }
 .mt-2 {
@@ -185,46 +190,46 @@ label {
   text-decoration: none;
 }
 /* EXTRA EXTRA small devices */
-@media only screen and (max-width: 400px){
-  .signup{
-        width: 100% !important;
-        .signup-container{
-          width: 90%;
-        }
+@media only screen and (max-width: 400px) {
+  .signup {
+    width: 100% !important;
+    .signup-container {
+      width: 90%;
+    }
   }
 }
 /* Extra small devices (phones, 600px and down) */
 @media (min-width: 400px) and (max-width: 600px) {
-    .signup{
-        width: 90% !important;
-    }
+  .signup {
+    width: 90% !important;
   }
-  
-  /* Small devices (portrait tablets and large phones, 600px and up) */
-  @media only screen and (min-width: 600px) {
-    .signup{
-        width: 90% !important;
-    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .signup {
+    width: 90% !important;
   }
-  
-  /* Medium devices (landscape tablets, 768px and up) */
-  @media only screen and (min-width: 768px) {
-    .signup{
-        width: 90% !important;
-    }
-  } 
-  
-  /* Large devices (laptops/desktops, 992px and up) */
-  @media only screen and (min-width: 992px) {
-   .signup{
-        width: 60% !important;
-    }
-  } 
-  
-  /* Extra large devices (large laptops and desktops, 1200px and up) */
-  @media only screen and (min-width: 1200px) {
-    .signup{
-        width: 30% !important;
-    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .signup {
+    width: 90% !important;
   }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .signup {
+    width: 60% !important;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .signup {
+    width: 30% !important;
+  }
+}
 </style>
